@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         Tview2 = (TextView) findViewById(R.id.resultview2);
         Tview3 = (TextView) findViewById(R.id.resultview3);
 
+        Rdio1.setChecked(true);  // 라디오그룹의 '피클'을 기본으로 선택해둠
+
         Rdio1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
