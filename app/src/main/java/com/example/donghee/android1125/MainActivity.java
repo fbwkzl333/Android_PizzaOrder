@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         Rdio1.setChecked(true);  // 라디오그룹의 '피클'을 기본으로 선택해둠
 
-        Rdio1.setOnClickListener(new View.OnClickListener() {
+        Rdio1.setOnClickListener(new View.OnClickListener() {   // 라디오버튼1(피클)이 선택 되면
             @Override
             public void onClick(View v) {
-                image.setImageResource(R.drawable.t1);
+                image.setImageResource(R.drawable.t1);  // 이미지뷰에 R/drawble/t1 파일을 보여줌
             }
         });
         Rdio2.setOnClickListener(new View.OnClickListener() {
