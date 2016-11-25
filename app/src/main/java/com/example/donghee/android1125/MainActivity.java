@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,22 +57,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
-                num3 = edit3.getText().toString();      // 입력값 String 형식으로 num에 담음
+                num3 = edit3.getText().toString();      // 입력값 edit1~3 을  =>  String 형식으로 num1~3에 담음
 
-                int result1 = Integer.parseInt(num1) + Integer.parseInt(num2) + Integer.parseInt(num3);     // 입력창1~3 입력값 전부 더함(Int). 주문 개수
-                Double result2 = (Double.parseDouble(num1) * 16000) + ((Double.parseDouble(num2)) * 11000) + ((Double.parseDouble(num3)) * 4000);   // 주문 금액 구함(Double)
+                if(num1.isEmpty()) {  // EditText에 입력값이 없다면
+                    Toast.makeText(getApplicationContext(), "피자의 주문개수를 입력해주세요 (없다면 0)",Toast.LENGTH_SHORT).show();
+                } else if(num2.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "스파게티의 주문개수를 입력해주세요 (없다면 0)",Toast.LENGTH_SHORT).show();
+                } else if(num3.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "샐러드의 주문개수를 입력해주세요 (없다면 0)",Toast.LENGTH_SHORT).show();
+                } else {    // 모두 입력되었으면
 
-                if(chB1.isChecked()) {      // 멤버쉽 카드 있을경우 7% 할인
-                    result2 = (Double)result2 - ((Double)result2 *0.07);
-                }
+                    int result1 = Integer.parseInt(num1) + Integer.parseInt(num2) + Integer.parseInt(num3);     // 입력창1~3 입력값 전부 더함(Int). 주문 개수
+                    Double result2 = (Double.parseDouble(num1) * 16000) + ((Double.parseDouble(num2)) * 11000) + ((Double.parseDouble(num3)) * 4000);   // 주문 금액 구함(Double)
 
-                Tview1.setText("주문 개수 : "+ result1); // 텍스트뷰1에 주문 개수 출력
-                Tview2.setText("주문 금액 : "+ result2); // 텍스트뷰2에 주문 금액 출력
+                    if (chB1.isChecked()) {      // 멤버쉽 카드 있을경우 7% 할인
+                        result2 = (Double) result2 - ((Double) result2 * 0.07);
+                    }
 
-                if(Rdio1.isChecked()) { // 라디오버튼1 (피클) 이 체크가 되있다면
-                    Tview3.setText("피클을 선택하셨습니다."); // 텍스트뷰3 에 보여줄 값
-                } else {    // 라디오버튼1 (피클) 이 체크가 안되있다면
-                    Tview3.setText("소스를 선택하셨습니다.");
+                    Tview1.setText("주문 개수 : " + result1); // 텍스트뷰1에 주문 개수 출력
+                    Tview2.setText("주문 금액 : " + result2); // 텍스트뷰2에 주문 금액 출력
+
+                    if (Rdio1.isChecked()) { // 라디오버튼1 (피클) 이 체크가 되있다면
+                        Tview3.setText("피클을 선택하셨습니다."); // 텍스트뷰3 에 보여줄 값
+                    } else {    // 라디오버튼1 (피클) 이 체크가 안되있다면
+                        Tview3.setText("소스를 선택하셨습니다.");
+                    }
+
                 }
 
 
