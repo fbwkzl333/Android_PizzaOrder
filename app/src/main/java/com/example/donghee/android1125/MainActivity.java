@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(chB1.isChecked()) {      // 멤버쉽 카드 있을경우 7% 할인
                     result2 = (Double)result2 - ((Double)result2 *0.07);
-                } else
+                }
 
                 Tview1.setText("주문 개수 : "+ result1); // 텍스트뷰1 주문 개수
                 Tview2.setText("주문 금액 : "+ result2); // 텍스트뷰2 주문 금액
